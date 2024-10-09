@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detector medi-IA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="icon.png" rel="icon">
+</head>
+<body>
+    <div class="image-section">
+        <img src="logo.png" alt="Descripción de la imagen" />
+    </div>
+
+    <div class="contenedor">
+        <div class="camera-section">
+            <video id="video" autoplay></video>
+            <div id="boton-container">
+                <button id="camera-btn" type="button">Activar cámara</button>
+                <button id="capture-btn" type="button" disabled>Capturar Texto</button>
+            </div>
+            
+            <canvas id="canvas"></canvas>
+            <p id="detected-text">Texto detectado: <span id="text-output"></span></p>
+            <p id="gemini-response">Respuesta: <span id="gemini-output"></span></p>
+        </div>
+
+        <div class="search-section">
+            <h2>O bien Ingrese el nombre:</h2>
+            <textarea id="consulta" placeholder="Escribe tu consulta aquí..."></textarea>
+            <div id="boton-container">
+                <button type="button" id="botonConsulta">Consultar</button>
+                <button type="button" id="botonHistorial">Ver Historial</button>
+            </div>
+            
+            <pre id="resultadoConsulta"></pre>
+        </div>
+    </div>
+
+    <!-- Modal para seleccionar la cámara -->
+    <div id="camera-modal">
+        <div id="modal-content">
+            <h3>Selecciona la cámara</h3>
+            <select id="camera-select"></select>
+            <button id="select-camera-btn">Seleccionar cámara</button>
+            <button id="close-modal">Cerrar</button>
+        </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+
+      
+    </script>
+    <script>
+        
+    </script>
+
+ 
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>
+
+
