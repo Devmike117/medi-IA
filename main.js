@@ -12,6 +12,42 @@ const textOutput = document.getElementById('text-output');
 const geminiOutput = document.getElementById('gemini-output');
 let cameraStream = null;
 
+// Función para detectar el navegador
+function detectBrowser() {
+    const userAgent = navigator.userAgent;
+
+    if (userAgent.indexOf("Chrome") > -1) {
+        return "Chrome";
+    } else if (userAgent.indexOf("Firefox") > -1) {
+        return "Firefox";
+    } else if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+    } else if (userAgent.indexOf("Edge") > -1) {
+        return "Edge";
+    } else {
+        return "Otro";
+    }
+}
+
+// Función para solicitar permisos de cámara
+async function requestCameraPermission() {
+    const browser = detectBrowser();
+
+    try {
+        await navigator.mediaDevices.getUserMedia({ video: true });
+        console.log(`Permisos de cámara otorgados en ${browser}.`);
+    } catch (error) {
+        console.error(`Error al obtener permisos de cámara en ${browser}:`, error);
+        if (error.name === 'NotAllowedError') {
+            alert("Permiso denegado. Por favor, permite el acceso a la cámara en la configuración del navegador.");
+        } else if (error.name === 'NotFoundError') {
+            alert("No se encontró la cámara. Asegúrate de que esté conectada.");
+        } else {
+            alert("Error al acceder a la cámara: " + error.message);
+        }
+    }
+}
+
 // Función para mostrar el modal
 function showModal() {
     cameraModal.style.display = 'flex';
@@ -40,23 +76,27 @@ async function getCameras() {
 }
 
 // Función para activar la cámara seleccionada
-function activateCamera(deviceId) {
+async function activateCamera(deviceId) {
+    console.log('Activando cámara con deviceId:', deviceId);
+    await requestCameraPermission(); // Solicitar permisos antes de activar la cámara
+
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const constraints = { video: {
-            deviceId: { exact: deviceId },
-            width: { ideal: 440 },
-            height: { ideal: 280 }
-         } };
-        navigator.mediaDevices.getUserMedia(constraints)
-        .then(function(stream) {
-            cameraStream = stream;
-            video.srcObject = stream;
+        try {
+            const constraints = {
+                video: {
+                    deviceId: { exact: deviceId },
+                    width: { ideal: 440 },
+                    height: { ideal: 280 }
+                }
+            };
+
+            cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+            video.srcObject = cameraStream;
             captureBtn.disabled = false;  // Activar el botón de captura cuando la cámara esté activa
             cameraBtn.textContent = "Desactivar cámara";  // Cambiar texto del botón
-        })
-        .catch(function(err) {
-            console.error("Error al activar la cámara: ", err);
-        });
+        } catch (err) {
+            console.error("Error al activar la cámara:", err);
+        }
     } else {
         alert("Tu navegador no soporta acceso a la cámara.");
     }
@@ -122,8 +162,7 @@ captureBtn.addEventListener('click', async function() {
                 const text = result.ParsedResults[0].ParsedText;
                 textOutput.textContent = text;
 
-                const prompt = `El siguiente texto ha sido detectado: "${text}". responde en español de forma con nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina, medicamentos o vitaminas muestra informacion pero sin dosis de usos, 
-                de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta".`;
+                const prompt = `El siguiente texto ha sido detectado: "${text}". responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina, medicamentos o vitaminas, muestra información pero sin dosis de usos, de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta".`;
 
                 try {
                     const result = await model.generateContent(prompt);
@@ -156,18 +195,16 @@ captureBtn.addEventListener('click', async function() {
     }
 });
 
+// Gemini API
+const apiKeyGemini = "AIzaSyCXZ5cLD8Xh2DWaP4wEuR-_uTpJ1B4gXDs"; // API Key de Gemini
+const genAI = new GoogleGenerativeAI(apiKeyGemini);
+const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // Modelo IA 
 
+// Llamar a la función para obtener las cámaras al cargar la página
+getCameras();
 
-        // Gemini API
-        const apiKeyGemini = "AIzaSyCXZ5cLD8Xh2DWaP4wEuR-_uTpJ1B4gXDs"; // API Key de Gemini
-        const genAI = new GoogleGenerativeAI(apiKeyGemini);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // Modelo IA 
-
-        // Llamar a la función para obtener las cámaras al cargar la página
-        getCameras();
-
-        // Almacenar consultas en localStorage y actualizarlas
-    function agregarAlHistorial(consulta, respuesta) {
+// Almacenar consultas en localStorage y actualizarlas
+function agregarAlHistorial(consulta, respuesta) {
     let historial = JSON.parse(localStorage.getItem('historial')) || [];
     // Verificar si la consulta ya existe en el historial
     if (!historial.some(item => item.consulta === consulta)) {
@@ -297,9 +334,6 @@ function mostrarHistorial() {
     }
 }
 
-
-
-
 // Consultar y agregar al historial
 document.querySelector("#botonConsulta").addEventListener("click", async () => {
     toggleButtonState(true);
@@ -314,8 +348,7 @@ document.querySelector("#botonConsulta").addEventListener("click", async () => {
     }
 
     try {
-        const prompt = `${consulta}. responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina o si son medicamentos muestra informacion pero sin dosis de usos 
-                    de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta" y si son varias secciones de informacion desglozalas`;
+        const prompt = `${consulta}. responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina o si son medicamentos muestra información pero sin dosis de usos de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta" y si son varias secciones de información desgloza las.`;
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = await response.text();
@@ -332,13 +365,14 @@ document.querySelector("#botonConsulta").addEventListener("click", async () => {
     toggleButtonState(false);
 });
 
+function toggleButtonState(disable) {
+    const botonConsulta = document.querySelector("#botonConsulta");
+    botonConsulta.disabled = disable;
+    botonConsulta.innerText = disable ? "Consultando..." : "Consultar";
+}
 
-
-        function toggleButtonState(disable) {
-            const botonConsulta = document.querySelector("#botonConsulta");
-            botonConsulta.disabled = disable;
-            botonConsulta.innerText = disable ? "Consultando..." : "Consultar";
-        }
+// Llamar a la función para obtener las cámaras al cargar la página
+getCameras();
 
 
 
