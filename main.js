@@ -29,36 +29,19 @@ function detectBrowser() {
     }
 }
 
-// Función para solicitar permisos de cámara
-async function requestCameraPermission() {
-    const browser = detectBrowser();
-
-    try {
-        await navigator.mediaDevices.getUserMedia({ video: true });
-        console.log(`Permisos de cámara otorgados en ${browser}.`);
-    } catch (error) {
-        console.error(`Error al obtener permisos de cámara en ${browser}:`, error);
-        if (error.name === 'NotAllowedError') {
-            alert("Permiso denegado. Por favor, permite el acceso a la cámara en la configuración del navegador.");
-        } else if (error.name === 'NotFoundError') {
-            alert("No se encontró la cámara. Asegúrate de que esté conectada.");
-        } else {
-            alert("Error al acceder a la cámara: " + error.message);
-        }
+// Función para manejar errores de cámara
+function handleCameraError(error) {
+    console.error(error);
+    let message = "Error al acceder a la cámara.";
+    if (error.name === 'NotAllowedError') {
+        message = "Permiso denegado. Por favor, permite el acceso a la cámara en la configuración del navegador.";
+    } else if (error.name === 'NotFoundError') {
+        message = "No se encontró la cámara. Asegúrate de que esté conectada.";
     }
+    alert(message);
 }
 
-// Función para mostrar el modal
-function showModal() {
-    cameraModal.style.display = 'flex';
-}
-
-// Función para ocultar el modal
-function closeModal() {
-    cameraModal.style.display = 'none';
-}
-
-// Obtener las cámaras disponibles y llenar el selector
+// Obtener las cámaras disponibles 
 async function getCameras() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     const videoDevices = devices.filter(device => device.kind === 'videoinput');
@@ -77,34 +60,29 @@ async function getCameras() {
 
 // Función para activar la cámara seleccionada
 async function activateCamera(deviceId) {
-    console.log('Activando cámara con deviceId:', deviceId);
-    await requestCameraPermission(); // Solicitar permisos antes de activar la cámara
+    try {
+        const constraints = {
+            video: {
+                deviceId: { exact: deviceId },
+                width: { ideal: 440 },
+                height: { ideal: 280 }
+            }
+        };
 
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        try {
-            const constraints = {
-                video: {
-                    deviceId: { exact: deviceId },
-                    width: { ideal: 440 },
-                    height: { ideal: 280 }
-                }
-            };
-
-            cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
-            video.srcObject = cameraStream;
-            captureBtn.disabled = false;  // Activar el botón de captura cuando la cámara esté activa
-            cameraBtn.textContent = "Desactivar cámara";  // Cambiar texto del botón
-        } catch (err) {
-            console.error("Error al activar la cámara:", err);
-        }
-    } else {
-        alert("Tu navegador no soporta acceso a la cámara.");
+        // Solicitar permisos y activar la cámara en un solo paso
+        cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+        video.srcObject = cameraStream;
+        captureBtn.disabled = false;  // Activar el botón de captura cuando la cámara esté activa
+        cameraBtn.textContent = "Desactivar cámara";  // Cambiar texto del botón
+    } catch (err) {
+        handleCameraError(err);
     }
 }
 
 // Función para desactivar la cámara
 function deactivateCamera() {
     if (cameraStream) {
+        console.log("Desactivando cámara...");
         const tracks = cameraStream.getTracks();
         tracks.forEach(track => track.stop());
         video.srcObject = null;
@@ -126,12 +104,28 @@ cameraBtn.addEventListener('click', function() {
 // Cuando se seleccione una cámara y se presione el botón "Seleccionar cámara"
 selectCameraBtn.addEventListener('click', function() {
     const selectedCameraId = cameraSelect.value;
-    activateCamera(selectedCameraId);
+    activateCamera(selectedCameraId); // Activar cámara directamente
     closeModal();
 });
 
 // Cerrar el modal cuando se presiona el botón "Cerrar"
 closeModalBtn.addEventListener('click', closeModal);
+
+// Obtener las cámaras disponibles al cargar la página
+window.onload = getCameras;
+
+// Función para mostrar modal
+function showModal() {
+    cameraModal.style.display = 'flex';
+}
+
+// Función para ocultar el modal
+function closeModal() {
+    cameraModal.style.display = 'none';
+}
+
+
+
 
 // Captura de imagen y manejo de texto
 captureBtn.addEventListener('click', async function() {
@@ -149,6 +143,7 @@ captureBtn.addEventListener('click', async function() {
         const formData = new FormData();
         formData.append("base64image", imageData);
         formData.append("language", "spa");
+        
 
         try {
             const response = await fetch("https://api.ocr.space/parse/image", {
@@ -162,7 +157,7 @@ captureBtn.addEventListener('click', async function() {
                 const text = result.ParsedResults[0].ParsedText;
                 textOutput.textContent = text;
 
-                const prompt = `El siguiente texto ha sido detectado: "${text}". responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina, medicamentos o vitaminas, muestra información pero sin dosis de usos, de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta".`;
+                const prompt = `El siguiente texto ha sido detectado: "${text}". responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina, medicamentos o vitaminas, ademas de ello si es nombre comercial de un medicamento muestralo con la informacion solicitada, pero sin dosis de usos, de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta".`;
 
                 try {
                     const result = await model.generateContent(prompt);
@@ -373,7 +368,3 @@ function toggleButtonState(disable) {
 
 // Llamar a la función para obtener las cámaras al cargar la página
 getCameras();
-
-
-
-
