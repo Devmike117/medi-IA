@@ -162,7 +162,8 @@ captureBtn.addEventListener('click', async function() {
                 const text = result.ParsedResults[0].ParsedText;
                 textOutput.textContent = text;
 
-                const prompt = `El siguiente texto ha sido detectado: "${text}". responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina, medicamentos o vitaminas, muestra información pero sin dosis de usos, de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta".`;
+                const prompt = `El siguiente texto ha sido detectado: "${text}". responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" de lo contrario muestra 
+                "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta".`;
 
                 try {
                     const result = await model.generateContent(prompt);
@@ -348,7 +349,8 @@ document.querySelector("#botonConsulta").addEventListener("click", async () => {
     }
 
     try {
-        const prompt = `${consulta}. responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" si es algo relacionado con la medicina o si son medicamentos muestra información pero sin dosis de usos de lo contrario muestra "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta" y si son varias secciones de información desgloza las.`;
+        const prompt = `${consulta}. responde en español de forma con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" de lo contrario muestra 
+        "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta"`;
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = await response.text();
@@ -372,4 +374,3 @@ function toggleButtonState(disable) {
 }
 
 // Llamar a la función para obtener las cámaras al cargar la página
-getCameras();
