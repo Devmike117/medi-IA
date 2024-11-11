@@ -374,3 +374,4 @@ function toggleButtonState(disable) {
 }
 
 // Llamar a la función para obtener las cámaras al cargar la página
+getCameras();
