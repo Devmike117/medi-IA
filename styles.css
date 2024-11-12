@@ -79,6 +79,17 @@ video {
     margin-top: 20px;
     transition: background-color 0.3s;
 }
+#exportarHistorial {
+    background-color: #fa617d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
 
 #capture-btn:hover,
 #botonConsulta:hover {
@@ -92,7 +103,7 @@ video {
     margin-top: 20px; /* Separación superior */
 }
 
-#botonConsulta, #botonHistorial {
+#botonConsulta, #botonHistorial, #exportarHistorial {
     background-color: #fa617d;
     color: white;
     border: none;
@@ -103,7 +114,7 @@ video {
     transition: background-color 0.3s;
 }
 
-#botonConsulta:hover, #botonHistorial:hover {
+#botonConsulta:hover, #botonHistorial:hover, #exportarHistorial:hover {
     background-color: #fa4f6e;
 }
 
@@ -270,6 +281,17 @@ h1 {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+#exportarHistorial {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fa617d;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 #botonConsulta:hover {
     background-color: #fa617d;
 }
@@ -366,3 +388,253 @@ h1 {
             padding: 10px;
             cursor: pointer;
         }
+
+/* Estilos para los derechos reservados fijos */
+#footer {
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    background-color: #202124; 
+    color: #fff; 
+    padding: 10px 0; 
+    text-align: center; 
+    font-size: 14px; 
+    z-index: 1000; 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilos para los enlaces en el footer */
+#footer a {
+    color: #ff7477;
+    text-decoration: none; 
+}
+
+#footer a:hover {
+    text-decoration: underline; 
+}
+
+
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;      
+    background-color: #202124;
+    padding: 10px 20px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Estilos de las secciones de información */
+.info-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.info-section h2 {
+    color: #202124;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+/* Footer */
+.footer {
+    text-align: center;
+    background-color: #202124;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem;
+}
+
+
+/* Contenedor para el logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+/* Estilo del logo */
+.logo {
+    width: 150px; /* Ajusta el tamaño del logo */
+    height: auto;
+    border-radius: 50%; 
+}
+
+/* Estilos para los enlaces de la barra */
+.navbar-links {
+    display: flex; 
+    gap: 20px;     
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none; 
+    font-size: 16px;
+    padding: 8px 16px; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto hover en los enlaces */
+.navbar-link:hover {
+    background-color: #fa617d;
+    color: white;
+}
+
+/* Responsividad: Hacer que el logo y los enlaces se ajusten a pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Los elementos se apilan verticalmente */
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+
+    .navbar-links {
+        flex-direction: column; /* Los enlaces se apilan verticalmente */
+        gap: 10px; /* Espacio entre los enlaces */
+        margin-top: 20px; /* Separación entre el logo y los enlaces */
+    }
+
+    .navbar-link {
+        font-size: 18px; /* Aumenta el tamaño de los enlaces en pantallas pequeñas */
+    }
+}
+
+/* Aseguramos que el contenido no se sobreponga a la barra fija */
+body {
+    padding-top: 80px; /* Añadimos espacio para la barra fija */
+}
+
+/* Contenedor principal de la página */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1000px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+@media(min-width: 768px) {
+    .contenedor {
+        flex-direction: row;
+    }
+}
+
+
+/* Contenedor para el logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el logo y otros elementos si decides añadir más */
+}
+
+/* Estilo del logo */
+.logo {
+    width: 300px; /* Ajusta el tamaño del logo */
+    height: auto;
+    border-radius: 50%; /* Si deseas un logo redondeado */
+}
+
+/* Responsividad: Hacer que el logo se ajuste a pantallas pequeñas */
+@media (max-width: 768px) {
+    .logo-container {
+        justify-content: absolute; /* Asegura que el logo esté centrado */
+    }
+
+    .logo {
+        width: 300px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+    }
+}
+
+/* Aseguramos que el contenido no se sobreponga a la barra fija */
+body {
+    padding-top: 80px; /* Añadimos espacio para la barra fija */
+}
+
+
+/* Menú hamburguesa */
+.hamburger {
+    display: none; /* Escondido en pantallas grandes */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 20px;
+    margin-left: auto; /* Alinea a la derecha */
+}
+
+.hamburger span {
+    background-color: white;
+    height: 3px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Barra de navegación en pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none; /* Escondido por defecto */
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+        position: absolute;
+        top: 60px; /* Ajusta la distancia desde la barra de navegación */
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con algo de transparencia */
+        z-index: 99;
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+        transform: translateY(-20px); /* Inicia un poco más arriba */
+        opacity: 0; /* Inicia oculto */
+        transition: all 0.3s ease; /* Transición suave */
+    }
+
+    .navbar-links.active {
+        display: flex; /* Mostrar el menú cuando está activo */
+        transform: translateY(0); /* Desplazamiento a su posición original */
+        opacity: 1; /* Hacer visible el menú */
+    }
+
+    .navbar-link {
+        text-align: center;
+        width: 100%;
+        padding: 15px 0;
+        color: white;
+        font-size: 18px;
+        text-transform: uppercase; /* Texto en mayúsculas */
+        font-weight: bold;
+        transition: background-color 0.3s ease; /* Transición suave para el hover */
+    }
+
+    .navbar-link:hover {
+        background-color: #fa4f6e; /* Efecto hover */
+    }
+
+    .hamburger {
+        display: flex; /* Mostrar el menú hamburguesa */
+    }
+}
