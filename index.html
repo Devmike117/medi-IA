@@ -3,13 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Detección de medicamentos por IA">
+    <meta property="og:description" content="Tan fácil como una foto.">
+    <meta property="og:image" content=" ">
+  </head>
     <title>Detector medi-IA</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="icon.png" rel="icon">
+    <link href="image/icon.png" rel="icon">
 </head>
 <body>
-    <div class="image-section">
-        <img src="logo.png" alt="Descripción de la imagen" />
+    <!-- Barra de navegación centrada -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Logo del proyecto" class="logo">
+        </div>
+        <!-- Enlaces de la barra de navegación -->
+        <div class="navbar-links" id="navbar-links">
+            <a href="acerca.html" class="navbar-link">Acerca de</a>
+            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <a href="ayuda.html" class="navbar-link">Ayuda</a>
+        </div>
+        <!-- Menú hamburguesa (solo visible en móviles) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 
     <div class="contenedor">
@@ -19,7 +38,6 @@
                 <button id="camera-btn" type="button">Activar cámara</button>
                 <button id="capture-btn" type="button" disabled>Capturar Texto</button>
             </div>
-            
             <canvas id="canvas"></canvas>
             <p id="detected-text">Texto detectado: <span id="text-output"></span></p>
             <p id="gemini-response">Respuesta: <span id="gemini-output"></span></p>
@@ -31,12 +49,11 @@
             <div id="boton-container">
                 <button type="button" id="botonConsulta">Consultar</button>
                 <button type="button" id="botonHistorial">Ver Historial</button>
+                <button type="button" id="exportarHistorial">Exportar Historial</button>
             </div>
-            
             <pre id="resultadoConsulta"></pre>
         </div>
     </div>
-
     <!-- Modal para seleccionar la cámara -->
     <div id="camera-modal">
         <div id="modal-content">
@@ -54,11 +71,20 @@
         }
       }
     </script>
-
- 
     <script type="module" src="main.js"></script>
 
+    <!-- Sección de derechos reservados -->
+    <div id="footer">
+        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">:)</a></p>
+    </div>
+    <!-- Script para el menú hamburguesa -->
+    <script>
+        // Función para alternar el menú hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navbarLinks = document.getElementById('navbar-links');
+        hamburger.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
-
-
