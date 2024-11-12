@@ -190,11 +190,17 @@ captureBtn.addEventListener('click', async function() {
             Si el texto hace referencia a un medicamento, responde con los siguientes detalles:
 
             1. Nombre comercial: el nombre del medicamento tal como aparece en la caja o envase.
+
             2. Nombre científico: el nombre genérico del medicamento.
+
             3. Compuestos activos: los ingredientes activos que componen el medicamento.
+
             4. Acción farmacológica: describe brevemente el efecto del medicamento en el cuerpo.
+
             5. Indicaciones: los usos terapéuticos o condiciones que el medicamento trata.
+
             6. Farmacocinética: cómo el cuerpo absorbe, distribuye, metaboliza y excreta el medicamento.
+            
             7. Reacciones adversas: posibles efectos secundarios del medicamento.
 
             Si el texto  no hace referencia a un medicamento, responde: 
@@ -458,6 +464,9 @@ function toggleButtonState(disable) {
     botonConsulta.disabled = disable;
     botonConsulta.innerText = disable ? "Consultando..." : "Consultar";
 }
+
+// Actualiza el año en el pie de página
+document.getElementById('year').textContent = new Date().getFullYear();
 
 // Llamar a la función para obtener las cámaras al cargar la página
 getCameras();
