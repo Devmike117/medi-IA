@@ -71,6 +71,17 @@
         });
     </script>
 
+    <!-- Script para el menú hamburguesa -->
+    <script>
+        // Función para alternar el menú hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navbarLinks = document.getElementById('navbar-links');
+
+        hamburger.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
+
     <script type="module" src="main.js"></script>
 
     <!-- Script para el menú hamburguesa -->
