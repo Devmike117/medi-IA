@@ -88,8 +88,7 @@ async function activateCamera(deviceId) {
         try {
             const constraints = {
                 video: {
-                    deviceId: { exact: deviceId },  // Seleccionar la cámara por deviceId
-                    facingMode: deviceId === "rear" ? "environment" : "user", // Asegurar la cámara trasera (environment) si se selecciona la cámara trasera
+                    deviceId: { exact: deviceId },
                     width: { ideal: 440 },
                     height: { ideal: 280 }
                 }
@@ -98,10 +97,8 @@ async function activateCamera(deviceId) {
             cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
             video.srcObject = cameraStream;
 
-            // Voltear el video horizontalmente para la cámara frontal (modo espejo)
-            if (deviceId !== "rear") {
-                video.style.transform = "scaleX(-1)"; 
-            }
+            // Voltear el video horizontalmente modo espejo
+            video.style.transform = "scaleX(-1)"; 
 
             // Activar el botón de captura cuando la cámara esté activa
             captureBtn.disabled = false;  
@@ -110,7 +107,6 @@ async function activateCamera(deviceId) {
             cameraBtn.textContent = "Desactivar cámara";  
         } catch (err) {
             console.error("Error al activar la cámara:", err);
-            alert("Hubo un problema al activar la cámara.");
         }
     } else {
         alert("Tu navegador no soporta acceso a la cámara.");
