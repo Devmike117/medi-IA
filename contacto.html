@@ -29,10 +29,21 @@
         <p>y por whatsapp (si es que respondo)</p>
     </section>
 
-    <!-- Derechos reservados al final -->
-    <footer class="footer">
-        <p>&copy; 2024 Detector medi-IA. Todos los derechos reservados.</p>
-    </footer>
+    <!-- Sección de derechos reservados -->
+    <div id="footer">
+        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">:)</a></p>
+    </div>
+
+    <!-- Script para el menú hamburguesa -->
+    <script>
+        // Función para alternar el menú hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navbarLinks = document.getElementById('navbar-links');
+
+        hamburger.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
 
     <script type="module" src="main.js"></script>
 </body>
