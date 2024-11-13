@@ -440,9 +440,21 @@ document.querySelector("#botonConsulta").addEventListener("click", async () => {
     }
 
     try {
-        const prompt = `${consulta}. responde en español con "nombre cientifico", "Acción farmacológica", "Indicaciones", "Farmacocinética", "Reacciones" 
-        y en el caso de que sean nombres de medicamentos comerciales muestas sus compuestos de lo contrario muestra 
-        "El texto proporcionado no tiene relación con la medicina. Por lo tanto, no puedo ofrecer una respuesta"`;
+        const prompt = `${consulta}. Responde con los siguientes detalles:
+
+            1. Nombre comercial: el nombre del medicamento tal como aparece en la caja o envase.
+
+            2. Nombre científico: el nombre genérico del medicamento.
+
+            3. Compuestos activos: los ingredientes activos que componen el medicamento.
+
+            4. Acción farmacológica: describe brevemente el efecto del medicamento en el cuerpo.
+
+            5. Indicaciones: los usos terapéuticos o condiciones que el medicamento trata.
+
+            6. Farmacocinética: cómo el cuerpo absorbe, distribuye, metaboliza y excreta el medicamento.
+            
+            7. Reacciones adversas: posibles efectos secundarios del medicamento.`;
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = await response.text();
