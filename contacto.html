@@ -6,18 +6,33 @@
     <title>Contacto - Detector medi-IA</title>
     <link rel="stylesheet" href="styles.css">
     <link href="image/icon.png" rel="icon">
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Inicializar EmailJS con tu user ID
+        emailjs.init('4wRnpCV-sT35bRVvF');
+    </script>
 </head>
 <body>
 
-    <!-- Barra de navegación -->
+    <!-- Barra de navegación centrada -->
     <div class="navbar">
         <div class="logo-container">
             <img src="image/logo.png" alt="Logo del proyecto" class="logo">
         </div>
-        <div class="navbar-links">
+        <!-- Enlaces de la barra de navegación -->
+        <div class="navbar-links" id="navbar-links">
             <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="acerca.html" class="navbar-link">Acerca de</a>
+            <a href="acerca.html" class="navbar-link">Acerca</a>
             <a href="ayuda.html" class="navbar-link">Ayuda</a>
+        </div>
+        <!-- Menú hamburguesa  -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
@@ -27,13 +42,71 @@
         <p>Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros:</p>
         <p>Por señales de humo</p>
         <p>y por whatsapp (si es que respondo)</p>
+
+        <!-- contact form -->
+        <form id="contact-form" action="" class="contact-form padd-15">
+            <div class="contact-inputs">
+                <!-- contact content -->
+                <div class="contact-content">
+                    <input type="email" id="from_email" class="contact-input" required>
+                    <label for="from_email" class="contact-label">Ingresa tú Correo</label>
+                    <span></span>
+                </div>
+                <!-- contact content -->
+                <div class="contact-content">
+                    <input type="text" id="subject" class="contact-input" required>
+                    <label for="subject" class="contact-label">Asunto</label>
+                    <span></span>
+                </div>
+                <!-- contact content -->
+                <div class="contact-content">
+                    <textarea id="message" cols="30" rows="10" class="contact-input" required></textarea>
+                    <label for="message" class="contact-label">Inresa tú Mensaje</label>
+                    <span></span>
+                </div>
+            </div>
+            <button type="submit" id="send-button" class="btn btn-default">Enviar</button>
+        </form>
+    
+        <script>
+            const btn = document.getElementById('send-button');
+    
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevenir el envío del formulario por defecto
+    
+                btn.textContent = 'Enviando...'; // Cambiar el texto del botón
+    
+                const serviceID = 'service_co9oyhn'; // Asegúrate de usar tu ID de servicio correcto
+                const templateID = 'template_2ptdylu'; // Asegúrate de usar tu ID de plantilla correcto
+    
+                const templateParams = {
+                    from_email: document.getElementById('from_email').value,
+                    subject: document.getElementById('subject').value,
+                    message: document.getElementById('message').value
+                };
+    
+                emailjs.send(serviceID, templateID, templateParams)
+                    .then(() => {
+                        btn.textContent = 'Enviar Mensaje'; // Restablecer el texto del botón
+                        alert('¡Mensaje enviado con éxito!');
+                    }, (err) => {
+                        btn.textContent = 'Enviar Mensaje'; // Restablecer el texto del botón
+                        alert('Error al enviar: ' + JSON.stringify(err)); // Mostrar el error
+                    });
+            });
+        </script>
+    </div>
+</div>
+</div>
     </section>
 
     <!-- Sección de derechos reservados -->
     <div id="footer">
-        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">:)</a></p>
+        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">>Devmike117</a></p>
     </div>
 
+    
+    <script type="module" src="main.js"></script>
     <!-- Script para el menú hamburguesa -->
     <script>
         // Función para alternar el menú hamburguesa
@@ -45,6 +118,6 @@
         });
     </script>
 
-    <script type="module" src="main.js"></script>
 </body>
 </html>
+
