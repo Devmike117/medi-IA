@@ -9,15 +9,22 @@
 </head>
 <body>
 
-    <!-- Barra de navegación -->
+    <<!-- Barra de navegación centrada -->
     <div class="navbar">
         <div class="logo-container">
             <img src="image/logo.png" alt="Logo del proyecto" class="logo">
         </div>
-        <div class="navbar-links">
+        <!-- Enlaces de la barra de navegación -->
+        <div class="navbar-links" id="navbar-links">
             <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="acerca.html" class="navbar-link">Acerca de</a>
             <a href="contacto.html" class="navbar-link">Contacto</a>
+            <a href="ayuda.html" class="navbar-link">Ayuda</a>
+        </div>
+        <!-- Menú hamburguesa  -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
@@ -65,7 +72,7 @@
 
     <!-- Sección de derechos reservados -->
     <div id="footer">
-        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">:)</a></p>
+        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">Devmike117</a></p>
     </div>
 
     <!-- Script para el menú hamburguesa -->
@@ -78,12 +85,5 @@
             navbarLinks.classList.toggle('active');
         });
     </script>
-
-    <script type="module" src="main.js"></script>
-</body>
-</html>
-
-
-    <script type="module" src="main.js"></script>
 </body>
 </html>
