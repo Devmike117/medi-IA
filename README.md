@@ -95,6 +95,31 @@ git clone https://github.com/Devmike117/medi-IA.git
 
 Si deseas contribuir al proyecto, siéntete libre de hacer un fork del repositorio y enviar pull requests con tus cambios.
 
+## Viabilidad del Proyecto
+
+**Tecnologías Utilizadas**
+- El proyecto hace uso de tecnologías modernas y populares que aseguran su viabilidad y escalabilidad:
+
+OCR (Reconocimiento Óptico de Caracteres): Se utiliza la API de OCR.space, una herramienta robusta y precisa para extraer texto de imágenes de manera eficiente. Esta API es conocida por su fiabilidad y facilidad de integración.
+
+Inteligencia Artificial (IA): El sistema utiliza la API Google Gemini para generar respuestas contextualizadas y detalladas sobre los medicamentos detectados en las imágenes. Esta tecnología avanzada permite ofrecer respuestas precisas y basadas en el texto extraído, como nombre comercial, nombre científico y acción farmacológica.
+
+**Tecnologías Web (Frontend y Backend):**
+
+JavaScript se utiliza para gestionar la interacción con el usuario, procesar imágenes y mostrar los resultados en tiempo real.
+Node.js se encarga de la gestión de solicitudes API y la comunicación entre el frontend y el backend.
+Estas tecnologías son ampliamente utilizadas y cuentan con un ecosistema maduro y eficiente que facilita el desarrollo de aplicaciones web interactivas.
+
+**Demanda y Potencial del Proyecto**
+El sistema responde a una creciente necesidad de accesibilidad y rapidez en la obtención de información sobre medicamentos. En especial, su uso en dispositivos móviles y entornos de salud puede proporcionar una herramienta vital en situaciones de emergencia o consulta rápida. Esto aumenta la viabilidad comercial y social del proyecto, ya que podría tener aplicaciones directas en la medicina, farmacias y el sector sanitario.
+
+**Aunque el proyecto es viable, presenta algunos desafíos que deben ser considerados:**
+
+Dependencia de APIs Externas: El uso de APIs de terceros como OCR.space y Google Gemini puede traer limitaciones de disponibilidad, costos o cambios inesperados en los servicios.
+Privacidad y Seguridad: Si el proyecto maneja información sensible, es necesario cumplir con regulaciones como el GDPR (Reglamento General de Protección de Datos) para garantizar la privacidad de los usuarios.
+Conclusión
+El Detector medi-IA es un proyecto técnicamente viable que utiliza tecnologías avanzadas de OCR y IA para ofrecer una solución innovadora y accesible en el campo de la farmacología. Su funcionalidad y potencial de mejora lo hacen adecuado para ser utilizado tanto por usuarios generales como por profesionales de la salud. La viabilidad a largo plazo dependerá de la correcta integración de APIs, la gestión de la privacidad de los datos y las posibilidades de expansión a medida que el proyecto evolucione.
+
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
