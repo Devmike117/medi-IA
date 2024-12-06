@@ -7,9 +7,19 @@ Detector medi-IA es una herramienta basada en Inteligencia Artificial (IA) dise�
 El sistema consta de una interfaz web donde se puede activar y desactivar la cámara, capturar una imagen, y procesar el texto detectado en la imagen para obtener detalles sobre medicamentos (nombre comercial, nombre científico, acción farmacológica, etc.) utilizando un modelo de inteligencia artificial. Los resultados y el historial de consultas se almacenan en el `localStorage` y se pueden exportar a un archivo `.txt`.
 
 ## Requisitos
+- Cámara web o de dispositivo móvil, laptop.
+- Navegador compatible con la API de acceso a la cámara por ejemplo:
 
-- Navegador compatible con la API de acceso a la cámara.
-- 
+|                       | 
+|----------------------------------|
+| **Firefox**        | 
+| **Microsoft Edge**          |                       |
+| **Google Chrome**                | 
+| **Safari**            |
+| **Brave**            |
+- Conexión a internet estable.
+
+
 
 ## Instalación
 
@@ -32,7 +42,7 @@ El sistema consta de una interfaz web donde se puede activar y desactivar la cá
    - Si el texto hace referencia a un medicamento, el sistema genera detalles sobre el medicamento.
 
 3. **Interacción con la IA:**
-   - Usando la API de **Google Gemini**, el sistema proporciona respuestas detalladas sobre medicamentos.
+   - Usando la Inteligencia Artifical, el sistema proporciona respuestas detalladas sobre medicamentos.
 
 4. **Historial de Consultas:**
    - El historial de consultas y respuestas se guarda en el `localStorage`.
@@ -47,6 +57,7 @@ El sistema consta de una interfaz web donde se puede activar y desactivar la cá
 | **HTML/CSS (Frontend)**          | Estructura y estilos para la interfaz de usuario.                           |
 | **API OCR.space**                | Para realizar el reconocimiento óptico de caracteres en las imágenes capturadas. |
 | **Node.js (Backend)**            | Para la gestión de las solicitudes API y la comunicación entre el frontend y el backend. |
+| **emailjs (Backend)**            | Para el envio de mensajes a traves de correo electronico. |
 
 
 
