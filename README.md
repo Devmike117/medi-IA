@@ -29,9 +29,9 @@ El sistema consta de una interfaz web donde se puede activar y desactivar la cá
 ## Instalación
 
 1. Clona este repositorio o descarga los archivos del proyecto.
-2. Asegúrate de tener una clave API de **OCR.space** para el procesamiento de imágenes.
-3. Obtén tu API Key para **Google Gemini** y configúralo en el código.
-4. Abre el archivo `index.html` en tu navegador para ver la interfaz.
+2. Asegúrate de tener las claves de APIS necesarias.
+3. Abre la carpeta del proyecto en tu IDE preferido.
+4. AEjecuta el archivo `index.html` en tu navegador para visualizar.
 
 ## Funcionalidades
 
