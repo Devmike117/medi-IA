@@ -30,7 +30,7 @@ El sistema consta de una interfaz web donde se puede activar y desactivar la cá
 
 1. Clona este repositorio o descarga los archivos del proyecto.
 2. Asegúrate de tener las claves de APIS necesarias.
-3. Abre la carpeta del proyecto en tu IDE preferido.
+3. Abre la carpeta del proyecto en tu IDE o editor de código preferido.
 4. AEjecuta el archivo `index.html` en tu navegador para visualizar.
 
 ## Funcionalidades
