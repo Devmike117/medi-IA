@@ -1,5 +1,10 @@
 # Proyecto de Detección de medicamentos por IA
 
+<p align="center">
+  <img alt="medi IA" src="mediia.png" />
+</p>
+
+
 Detector medi-IA es una herramienta basada en Inteligencia Artificial (IA) diseñada para ayudar a los usuarios a procesar texto en tiempo real de imágenes o videos. Gracias a tecnologías avanzadas como el Reconocimiento Óptico de Caracteres (OCR) y procesamiento de lenguaje natural, el programa puede captar textos de cualquier fuente visual y ofrecer respuestas contextualizadas, realizar consultas y exportar el historial que el usuario tiene.
 
 ## Descripción
