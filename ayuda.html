@@ -72,7 +72,12 @@
 
     <!-- Sección de derechos reservados -->
     <div id="footer">
-        <p>&copy; 2024 Todos los derechos reservados | TesjoSoft. <a href="">Devmike117</a></p>
+        <p>&copy;Todos los derechos reservados <span id="currentYear"></span> | TesjoSoft. <a href="">Devmike117</a></p></p>
+
+<script>
+  // Obtiene el año actual y lo inserta en el elemento con id 'currentYear'
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
     </div>
 
     <!-- Script para el menú hamburguesa -->
