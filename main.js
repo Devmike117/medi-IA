@@ -251,7 +251,7 @@ function resetCaptureButton() {
 }
 
 // Gemini API
-const apiKeyGemini = "AIzaSyCXZ5cLD8Xh2DWaP4wEuR-_uTpJ1B4gXDs"; // API Key de Gemini
+const apiKeyGemini = "AIzaSyCocKOImlXzt4dWzZiSURRUpVNDmeadnrw"; // API Key de Gemini
 const genAI = new GoogleGenerativeAI(apiKeyGemini);
 const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // Modelo de IA de Gemini
 
