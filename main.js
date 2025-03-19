@@ -253,7 +253,7 @@ function resetCaptureButton() {
 // Gemini API
 const apiKeyGemini = "AIzaSyDcMWvuS-V0NzeNKpRzEMKgk7x1J8XC7ZM"; // API Key de Gemini
 const genAI = new GoogleGenerativeAI(apiKeyGemini);
-const model = genAI.getGenerativeModel({ model: "gemini" }); // Modelo de IA de Gemini
+const model = genAI.getGenerativeModel({ model: "gemini pro" }); // Modelo de IA de Gemini
 
 // Obtener las cámaras disponibles al cargar la página
 getCameras();
