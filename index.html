@@ -1,96 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Detección de medicamentos por IA">
-    <meta property="og:description" content="Tan fácil como una foto.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Devmike117/medi-IA/refs/heads/main/image/fondowebsite.png?token=GHSAT0AAAAAACZ4M66KDJBKSVJBPY24KSDKZZTOI3A">
-  </head>
-    <title>Detector medi-IA</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="image/icon.png" rel="icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/styleLogin.css">
+  <title>Login</title>
+  <link href="images/citas.webp" rel="icon">
 </head>
-<body>
-    <!-- Barra de navegación centrada -->
-    <div class="navbar">
-        <div class="logo-container">
-            <img src="image/logo.png" alt="Logo del proyecto" class="logo">
-        </div>
-        <!-- Enlaces de la barra de navegación -->
-        <div class="navbar-links" id="navbar-links">
-            <a href="acerca.html" class="navbar-link">Acerca de</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
-            <a href="ayuda.html" class="navbar-link">Ayuda</a>
-        </div>
-        <!-- Menú hamburguesa (solo visible en móviles) -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
+<body class="back">
+  <div class="bg"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
 
-    <div class="contenedor">
-        <div class="camera-section">
-            <video id="video" autoplay></video>
-            <div id="boton-container">
-                <button id="camera-btn" type="button">Activar cámara</button>
-                <button id="capture-btn" type="button" disabled>Capturar Texto</button>
-            </div>
-            <canvas id="canvas"></canvas>
-            <p id="detected-text">Texto detectado: <span id="text-output"></span></p>
-            <p id="gemini-response">Respuesta: <span id="gemini-output"></span></p>
+  <div class="login-container">
+    <div class="login-form">
+      <div style="text-align: center;">
+        <img src="image/logo.png" alt="Logo" class="logo" width="70%" height="auto">
+      </div>
+
+      <h1>Bienvenid@ a medi-IA</h1>
+
+      <!-- Formulario de login -->
+      <form id="loginForm" method="POST" class="form-register">
+        <h2 class="form-titulo">Ingrese los datos</h2>
+
+        <div class="input-group">
+          <input type="text" id="usuario" name="usuario" placeholder="Usuario" class="input-48" required>
+          <input type="password" id="Contraseña" name="Contraseña" placeholder="Contraseña" class="input-48" required>
+
+          <!-- Div para mostrar el mensaje de error -->
+          <div id="mensaje-error" class="error-message" style="display: none;">Usuario o contraseña incorrectos. Inténtalo de nuevo.</div>
+
+          <input type="submit" value="Ingresar" class="btn-enviar">
         </div>
 
-        <div class="search-section">
-            <h2>O bien Ingrese el nombre:</h2>
-            <textarea id="consulta" placeholder="Escribe tu consulta aquí..."></textarea>
-            <div id="boton-container">
-                <button type="button" id="botonConsulta">Consultar</button>
-                <button type="button" id="botonHistorial">Ver Historial</button>
-                <button type="button" id="exportarHistorial">Exportar Historial</button>
-            </div>
-            <pre id="resultadoConsulta"></pre>
-        </div>
-    </div>
-    <!-- Modal para seleccionar la cámara -->
-    <div id="camera-modal">
-        <div id="modal-content">
-            <h3>Selecciona la cámara</h3>
-            <select id="camera-select"></select>
-            <button id="select-camera-btn">Seleccionar cámara</button>
-            <button id="close-modal">Cerrar</button>
-        </div>
-    </div>
+        <p class="form-link">2025 | Todos los derechos reservados | <a href="construccion.html">Olvidé mi Contraseña</a></p>
 
-    <script type="importmap">
-      {
-        "imports": {
-          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        <hr>
+        <p>¿Nuevo usuario? <a href="#registro" class="toggle-register">Regístrate aquí</a></p>
+      </form>
+
+      <!-- Formulario de registro para nuevos usuarios -->
+      <form id="registroForm" class="form-register" style="display: none;">
+        <h2 class="form-titulo">Crear una cuenta</h2>
+
+        <div class="input-group">
+          
+          <input type="text" id="usuarioRegistro" placeholder="Usuario" class="input-48" required>
+          <input type="password" id="contraseñaRegistro" placeholder="Contraseña" class="input-48" required>
+
+          <input type="button" value="Registrar" class="btn-enviar" id="registrarBtn">
+        </div>
+
+        <p class="form-link">¿Ya tienes cuenta? <a href="#login" class="toggle-register">Inicia sesión aquí</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Alternar entre el formulario de login y registro
+    document.querySelectorAll('.toggle-register').forEach((element) => {
+      element.addEventListener('click', function(e) {
+        e.preventDefault();
+        const loginForm = document.getElementById('loginForm');
+        const registroForm = document.getElementById('registroForm');
+
+        if (loginForm.style.display === 'none') {
+          loginForm.style.display = 'block';
+          registroForm.style.display = 'none';
+        } else {
+          loginForm.style.display = 'none';
+          registroForm.style.display = 'block';
         }
+      });
+    });
+
+    // Función para validar el login
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const usuario = document.getElementById('usuario').value;
+      const contraseña = document.getElementById('Contraseña').value;
+
+      // Obtener los usuarios almacenados
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+      // Validar el login
+      const usuarioValido = usuarios.find(u => u.usuario === usuario && u.contraseña === contraseña);
+
+      if (usuarioValido) {
+        // Redirigir si el login es exitoso 
+        window.location.href = 'inicio.html';
+        // Almacenar el usuario como sesión en sessionStorage
+        sessionStorage.setItem('usuarioLogueado', JSON.stringify(usuarioValido));
+      } else {
+        // Mostrar el mensaje de error si las credenciales son incorrectas
+        document.getElementById('mensaje-error').style.display = 'block';
       }
-    </script>
-    <script type="module" src="main.js"></script>
+    });
 
-    <!-- Sección de derechos reservados -->
-    <div id="footer">
-<p>&copy;Todos los derechos reservados <span id="currentYear"></span> | TesjoSoft. <a href="">Devmike117</a></p></p>
+    // Función para registrar un nuevo usuario
+    document.getElementById('registrarBtn').addEventListener('click', function() {
+      
+      const usuario = document.getElementById('usuarioRegistro').value;
+      const contraseña = document.getElementById('contraseñaRegistro').value;
 
-<script>
-  // Obtiene el año actual y lo inserta en el elemento con id 'currentYear'
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
+      // crear una nueva cuenta
+      const nuevoUsuario = {
+        
+        usuario,
+        contraseña
+      };
 
-    </div>
-    <!-- Script para el menú hamburguesa -->
-    <script>
-        // Función para alternar el menú hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navbarLinks = document.getElementById('navbar-links');
-        hamburger.addEventListener('click', () => {
-            navbarLinks.classList.toggle('active');
-        });
-    </script>
+      // Obtener los usuarios actuales
+      const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+      // Verificar si el usuario ya existe
+      const usuarioExistente = usuarios.find(u => u.usuario === usuario);
+      if (usuarioExistente) {
+        alert('Este usuario ya está registrado.');
+        return;
+      }
+
+      // Agregar el nuevo usuario a la lista
+      usuarios.push(nuevoUsuario);
+
+      // Guardar los usuarios nuevamente en el localStorage
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+      // Redirigir o mostrar un mensaje de éxito
+      alert('Usuario registrado exitosamente!');
+      
+      
+    });
+
+    // Verificar si el usuario está logueado al cargar la página
+    if (sessionStorage.getItem('usuarioLogueado') !== null) {
+      // Si el usuario está logueado, redirigir directamente a inicio.html
+      window.location.href = 'inicio.html';
+    }
+
+    // Cerrar sesión al retroceder
+    window.addEventListener('popstate', function() {
+      // Eliminar el usuario de sessionStorage cuando el navegador regrese a la página de login
+      sessionStorage.removeItem('usuarioLogueado');
+      // Redirigir a la página de login
+      window.location.href = 'index.html';
+    });
+
+    // Prevención de acceso directo a inicio.html si no está logueado
+    if (window.location.href.includes("inicio.html") && sessionStorage.getItem('usuarioLogueado') === null) {
+      window.location.href = "index.html";
+    }
+  </script>
 </body>
 </html>
+
