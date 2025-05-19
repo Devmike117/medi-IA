@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Detección de medicamentos por IA">
+    <meta property="og:description" content="Tan fácil como una foto.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Devmike117/medi-IA/refs/heads/main/image/fondowebsite.png?token=GHSAT0AAAAAACZ4M66KDJBKSVJBPY24KSDKZZTOI3A">
+    <title>Detector medi-IA</title>
+    <link href="css/styles.css " rel="stylesheet">
+    <link href="image/icon.png" rel="icon">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!-- Modal de Advertencia -->
+<div id="warning-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="close-warning">&times;</span>
+        <h3>Advertencia</h3>
+        <img src="https://media.tenor.com/4yEuW6bbRo0AAAAi/gato.gif" alt="Advertencia" class="modal-image">
+        <p>La información proporcionada es solo de carácter informativo y no sustituye la consulta con un profesional de la salud. Si requiere ayuda, consulte con un especialista.</p>
+    </div>
+</div>
+
+<!-- Estilos para el Modal -->
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(0.5);
+        transition: transform 0.3s ease;
+    }
+    .modal-image {
+        width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .close-btn {
+        float: right;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    .modal.show {
+        opacity: 1;
+    }
+    .modal.show .modal-content {
+        transform: scale(1);
+    }
+</style>
+
+<!-- Script para mostrar el Modal -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById("warning-modal");
+        const closeBtn = document.getElementById("close-warning");
+
+        setTimeout(() => {
+            modal.style.display = "flex";
+            setTimeout(() => modal.classList.add("show"), 10);
+        }, 100);
+
+        closeBtn.addEventListener("click", function() {
+            modal.classList.remove("show");
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300);
+        });
+    });
+</script>
+
+    <!-- Barra de navegación centrada -->
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Logo del proyecto" class="logo">
+        </div>
+        <!-- Enlaces de la barra de navegación -->
+        <div class="navbar-links" id="navbar-links">
+            <a href="acerca.html" class="navbar-link">Acerca de</a>
+            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <a href="ayuda.html" class="navbar-link">Ayuda</a>
+        </div>
+        <!-- Menú hamburguesa (solo visible en móviles) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="contenedor">
+        <div class="camera-section">
+            <video id="video" autoplay></video>
+            <div id="boton-container">
+
+                <button id="camera-btn">
+                    <i class="fas fa-camera"></i>
+                    Activar cámara
+                    <br>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M7.5 4.586A2 2 0 0 1 8.914 4h6.172a2 2 0 0 1 1.414.586L17.914 6H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1.086L7.5 4.586ZM10 12a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm2-4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" clip-rule="evenodd"/>
+                    </svg>
+                    
+                </button>
+                
+                  
+                <button id="capture-btn" disabled>
+                    <i class="fas fa-image"></i> 
+                    Capturar Texto 
+                    <br>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6.2V5h11v1.2M8 5v14m-3 0h6m2-6.8V11h8v1.2M17 11v8m-1.5 0h3"/>
+                      </svg>
+                </button>
+
+                <button id="voice-record">
+                    <i class="fas fa-microphone"></i> 
+                    Búsqueda por voz
+                    <br>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M5 8a1 1 0 0 1 1 1v3a4.006 4.006 0 0 0 4 4h4a4.006 4.006 0 0 0 4-4V9a1 1 0 1 1 2 0v3.001A6.006 6.006 0 0 1 14.001 18H13v2h2a1 1 0 1 1 0 2H9a1 1 0 1 1 0-2h2v-2H9.999A6.006 6.006 0 0 1 4 12.001V9a1 1 0 0 1 1-1Z" clip-rule="evenodd"/>
+                        <path d="M7 6a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4h-2a4 4 0 0 1-4-4V6Z"/>
+                    </svg>                      
+                </button>
+                
+            </div>
+            <canvas id="canvas"></canvas>
+            <p id="detected-text">Texto detectado: <span id="text-output"></span></p>
+            <p id="gemini-response">Respuesta: <span id="gemini-output"></span></p>
+        </div>
+
+        <div class="search-section">
+            <h2>O bien Ingrese el nombre:</h2>
+            <textarea id="consulta" placeholder="Escribe tu consulta aquí..."></textarea>
+            <div id="boton-container">
+                <button type="button" id="botonConsulta">Consultar
+                    <br>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"/>
+                        <path fill-rule="evenodd" d="M21.707 21.707a1 1 0 0 1-1.414 0l-3.5-3.5a1 1 0 0 1 1.414-1.414l3.5 3.5a1 1 0 0 1 0 1.414Z" clip-rule="evenodd"/>
+                      </svg>                      
+                </button>
+                <button type="button" id="botonHistorial">Ver Historial
+                    <br>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Z" clip-rule="evenodd"/>
+                      </svg>                      
+                </button>
+                <button type="button" id="exportarHistorial">Exportar Historial
+                    <br>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v9.293l-2-2a1 1 0 0 0-1.414 1.414l.293.293h-6.586a1 1 0 1 0 0 2h6.586l-.293.293A1 1 0 0 0 18 16.707l2-2V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Z" clip-rule="evenodd"/>
+                      </svg>
+                </button>
+            </div>
+            <pre id="resultadoConsulta"></pre>
+        </div>
+    </div>
+    <!-- Modal para seleccionar la cámara -->
+    <div id="camera-modal">
+        <div id="modal-content">
+            <h3>Selecciona la cámara</h3>
+            <select id="camera-select"></select>
+            <button id="select-camera-btn">Seleccionar cámara</button>
+            <button id="close-modal">Cerrar</button>
+        </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    <script type="module" src="js/main.js"></script>
+    
+
+    <!-- Sección de derechos reservados -->
+    <div id="footer">
+<p>&copy;Todos los derechos reservados <span id="currentYear"></span> | TesjoSoft. <a href="">Devmike117</a></p></p>
+
+<script>
+  // Obtiene el año actual 
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+    </div>
+    <!-- Script para el menú hamburguesa -->
+    <script>
+        // Función para alternar el menú hamburguesa
+        const hamburger = document.getElementById('hamburger');
+        const navbarLinks = document.getElementById('navbar-links');
+        hamburger.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
