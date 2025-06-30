@@ -149,6 +149,15 @@ if (window.location.pathname.includes("inicio.html") && sessionStorage.getItem('
       window.location.href = 'index.html';
     });
 
+    // Eliminar la sesión si el usuario llega aquí desde el botón de atrás
+window.addEventListener('pageshow', function(event) {
+  // Si se carga desde el historial del navegador (flechas)
+  if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+    sessionStorage.removeItem('usuarioLogueado'); // Borrar sesión automáticamente
+  }
+});
+
+
     // Prevención de acceso directo a inicio.html si no está logueado
     if (window.location.href.includes("index.html") && sessionStorage.getItem('usuarioLogueado') === null) {
       window.location.href = "construccion.html";
