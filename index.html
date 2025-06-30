@@ -149,7 +149,7 @@
     });
 
     // Prevención de acceso directo a inicio.html si no está logueado
-    if (window.location.href.includes("inicio.html") && sessionStorage.getItem('usuarioLogueado') === null) {
+    if (window.location.href.includes("index.html") && sessionStorage.getItem('usuarioLogueado') === null) {
       window.location.href = "construccion.html";
     }
   </script>
