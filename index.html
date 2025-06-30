@@ -157,11 +157,6 @@ window.addEventListener('pageshow', function(event) {
   }
 });
 
-
-    // Prevención de acceso directo a inicio.html si no está logueado
-    if (window.location.href.includes("index.html") && sessionStorage.getItem('usuarioLogueado') === null) {
-      window.location.href = "index.html";
-    }
   </script>
 </body>
 </html>
