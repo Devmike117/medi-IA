@@ -178,7 +178,7 @@ captureBtn.addEventListener('click', async function() {
     const imageData = canvas.toDataURL("image/png");
 
     // OCR.space API
-    const apiKey = ""; // API key de OCR.space
+    const apiKey = "K85871041088957"; // API key de OCR.space
     const formData = new FormData();
     formData.append("base64image", imageData);
     formData.append("language", "spa");
@@ -342,7 +342,7 @@ voiceRecordBtn.addEventListener('click', startVoiceSearch);
 
 
 // Gemini API
-const apiKeyGemini = ""; // API Key de Gemini
+const apiKeyGemini = "AIzaSyDcMWvuS-V0NzeNKpRzEMKgk7x1J8XC7ZM"; // API Key de Gemini
 const genAI = new GoogleGenerativeAI(apiKeyGemini);
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" }); // Modelo de IA de Gemini
 
