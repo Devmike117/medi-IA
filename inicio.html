@@ -254,6 +254,24 @@
     }
   });
 </script>
+  <script>
+  document.addEventListener("keydown", function (e) {
+    // Bloquear F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J")) ||
+      (e.ctrlKey && e.key === "u")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+  // Opcional: bloquear clic derecho
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
+</script>
+
 
 </body>
 </html>
