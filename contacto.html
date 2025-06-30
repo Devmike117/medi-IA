@@ -35,38 +35,42 @@
             <span></span>
         </div>
     </div>
+<!-- Sección de "Contacto" -->
+<section id="contacto" class="info-section">
+  <div class="contact-wrapper">
+    <h2>Contacto</h2>
+    <p>Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros:</p>
+    <p>Por señales de humo</p>
+    <p>y por WhatsApp (si es que respondo)</p>
 
-    <!-- Sección de "Contacto" -->
-    <section id="contacto" class="info-section">
-        <h2>Contacto</h2>
-        <p>Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros:</p>
-        <p>Por señales de humo</p>
-        <p>y por whatsapp (si es que respondo)</p>
+    <form id="contact-form" action="" class="contact-form padd-15">
+      <div class="contact-inputs">
 
-        <!-- contact form -->
-        <form id="contact-form" action="" class="contact-form padd-15">
-            <div class="contact-inputs">
-                <!-- contact content -->
-                <div class="contact-content">
-                    <input type="email" id="from_email" class="contact-input" required>
-                    <label for="from_email" class="contact-label">Ingresa tú Correo</label>
-                    <span></span>
-                </div>
-                <!-- contact content -->
-                <div class="contact-content">
-                    <input type="text" id="subject" class="contact-input" required>
-                    <label for="subject" class="contact-label">Asunto</label>
-                    <span></span>
-                </div>
-                <!-- contact content -->
-                <div class="contact-content">
-                    <textarea id="message" cols="30" rows="10" class="contact-input" required></textarea>
-                    <label for="message" class="contact-label">Inresa tú Mensaje</label>
-                    <span></span>
-                </div>
-            </div>
-            <button type="submit" id="send-button" class="btn btn-default">Enviar</button>
-        </form>
+        <div class="contact-content">
+          <input type="email" id="from_email" class="contact-input" required placeholder="ejemplo@correo.com">
+          <label for="from_email" class="contact-label">Correo electrónico</label>
+          <span></span>
+        </div>
+
+        <div class="contact-content">
+          <input type="text" id="subject" class="contact-input" required placeholder="Asunto del mensaje">
+          <label for="subject" class="contact-label">Asunto</label>
+          <span></span>
+        </div>
+
+        <div class="contact-content">
+          <textarea id="message" cols="30" rows="8" class="contact-input" required placeholder="Escribe tu mensaje aquí..."></textarea>
+          <label for="message" class="contact-label">Mensaje</label>
+          <span></span>
+        </div>
+
+      </div>
+
+      <button type="submit" id="send-button" class="btn btn-default">Enviar mensaje</button>
+    </form>
+
+
+
     
         <script>
             const btn = document.getElementById('send-button');
@@ -125,4 +129,5 @@
 
 </body>
 </html>
+
 
