@@ -134,11 +134,12 @@
       
     });
 
-    // Verificar si el usuario está logueado al cargar la página
-    if (sessionStorage.getItem('usuarioLogueado') !== null) {
-      // Si el usuario está logueado, redirigir directamente a inicio.html
-      window.location.href = 'inicio.html';
-    }
+    // Verificar que solo accedan a inicio.html si están logueados
+if (window.location.pathname.includes("inicio.html") && sessionStorage.getItem('usuarioLogueado') === null) {
+  // Redirige al login si no hay sesión activa
+  window.location.href = "index.html";
+}
+
 
     // Cerrar sesión al retroceder
     window.addEventListener('popstate', function() {
