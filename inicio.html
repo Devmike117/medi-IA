@@ -216,6 +216,22 @@
         hamburger.addEventListener('click', () => {
             navbarLinks.classList.toggle('active');
         });
+
+
+        // Bloquear acceso si no hay sesión activa
+if (sessionStorage.getItem('usuarioLogueado') === null) {
+  alert("Sesión expirada. Inicia sesión nuevamente.");
+  window.location.href = "index.html";
+}
+
+// Detectar si regresó con la flecha del navegador y cerrar sesión
+window.addEventListener('pageshow', function(event) {
+  if (!sessionStorage.getItem('usuarioLogueado')) {
+    alert("Sesión cerrada. Por favor, vuelve a iniciar sesión.");
+    window.location.href = "index.html";
+  }
+});
+
     </script>
 </body>
 </html>
