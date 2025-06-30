@@ -1,160 +1,158 @@
-/* Asegúrate de tener el fondo bien configurado */
+/* Fondo principal */
 .back {
-    background: url('images/fondo.webp') no-repeat center center fixed;
-    background-size: cover;
-  }
-  
-  /* Estilos para la forma de login */
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .login-form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
-  }
-  
-  h2.form-titulo {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .input-48 {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
-  }
-  
-  .btn-enviar {
-    width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .btn-enviar:hover {
-    background-color: #45a049;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
-  .form-link {
-    margin-top: 20px;
-    font-size: 14px;
-  }
-  
-  .form-link a {
-    color: #007BFF;
-    text-decoration: none;
-  }
-  
-  .form-link a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsividad para pantallas más pequeñas */
-  @media (max-width: 768px) {
-    .login-form {
-      padding: 30px;
-    }
-  
-    h1 {
-      font-size: 20px;
-    }
-  
-    h2.form-titulo {
-      font-size: 18px;
-    }
-  
-    .input-48 {
-      font-size: 14px;
-    }
-  
-    .btn-enviar {
-      font-size: 14px;
-    }
-  }
-  
+  background: url('images/fondo.webp') no-repeat center center fixed;
+  background-size: cover;
+}
 
-  
-  html {
-    height:100%;
+/* Contenedor de login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Tarjeta del formulario */
+.login-form {
+  background: rgba(255, 255, 255, 0.93);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Títulos */
+h1, h2.form-titulo {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #007acc;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2.form-titulo {
+  font-size: 20px;
+}
+
+/* Inputs */
+.input-48 {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.input-48:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
+/* Botón */
+.btn-enviar {
+  width: 100%;
+  padding: 12px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enviar:hover {
+  background-color: #005f99;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Enlace inferior */
+.form-link {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.form-link a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+.form-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-form {
+    padding: 30px;
   }
-  
-  body {
-    margin:0;
-  }
-  
-  .bg {
-    animation:slide 3s ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #ec1f7c 50%, #09f 50%);
-    bottom:0;
-    left:-50%;
-    opacity:.5;
-    position:fixed;
-    right:-50%;
-    top:0;
-    z-index:-1;
-  }
-  
-  .bg2 {
-    animation-direction:alternate-reverse;
-    animation-duration:4s;
-  }
-  
-  .bg3 {
-    animation-duration:5s;
-  }
-  
-  .content {
-    background-color:rgba(255,255,255,.8);
-    border-radius:.25em;
-    box-shadow:0 0 .25em rgba(0,0,0,.25);
-    box-sizing:border-box;
-    left:50%;
-    padding:10vmin;
-    position:fixed;
-    text-align:center;
-    top:50%;
-    transform:translate(-50%, -50%);
-  }
-  
+
   h1 {
-    font-family:monospace;
+    font-size: 20px;
   }
-  
-  @keyframes slide {
-    0% {
-      transform:translateX(-25%);
-    }
-    100% {
-      transform:translateX(25%);
-    }
+
+  h2.form-titulo {
+    font-size: 18px;
   }
+
+  .input-48 {
+    font-size: 14px;
+  }
+
+  .btn-enviar {
+    font-size: 14px;
+  }
+}
+
+/* Fondo animado */
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #007acc 50%, #00bcd4 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.4;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
