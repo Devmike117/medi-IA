@@ -414,3 +414,32 @@ textarea {
 .btn-default:hover {
   background-color: #005f99;
 }
+
+.caja-informativa {
+  background-color: #ffffffee;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+.caja-informativa h2 {
+  color: #2b60d8;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #2b60d8;
+  padding-bottom: 0.4rem;
+}
+
+.caja-informativa ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.caja-informativa li {
+  margin-bottom: 0.6rem;
+}
+
