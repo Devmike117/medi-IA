@@ -5,77 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acerca de - Detector medi-IA</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="image/icon.png" rel="icon">
+    <link rel="icon" href="image/icon.png">
 </head>
 <body>
-    <body oncontextmenu="return false" onkeydown="return false"></body>
 
-    <!-- Barra de navegación centrada -->
+    <!-- Barra de navegación -->
     <div class="navbar">
         <div class="logo-container">
             <img src="image/logo.png" alt="Logo del proyecto" class="logo">
         </div>
-        <!-- Enlaces de la barra de navegación -->
         <div class="navbar-links" id="navbar-links">
             <a href="inicio.html" class="navbar-link">Inicio</a>
             <a href="contacto.html" class="navbar-link">Contacto</a>
             <a href="ayuda.html" class="navbar-link">Ayuda</a>
         </div>
-        <!-- Menú hamburguesa  -->
         <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </div>
 
-    <!-- Sección de "Acerca de" -->
-    <section id="acerca-de" class="info-section">
-        
-        <section>
-            <br>
-            <h2>¿Qué es Detector medi-IA?</h2>
-            <p>Detector medi-IA es una herramienta basada en Inteligencia Artificial (IA) diseñada para ayudar a los usuarios a procesar texto en tiempo real desde imágenes y videos. Gracias a tecnologías avanzadas como el Reconocimiento Óptico de Caracteres (OCR) y procesamiento de lenguaje natural, el programa puede captar textos de cualquier fuente visual y ofrecer respuestas contextualizadas, realizar consultas y exportar el historial de interacciones.</p>
-            <p>Este proyecto tiene como objetivo facilitar el acceso a la información de manera rápida y precisa, sin importar el formato del contenido (texto en imágenes, videos o consultas manuales).</p><br>
-        </section>
+    <!-- Sección Acerca de con caja -->
+<section id="acerca-de" class="info-section">
+  <div class="caja-informativa">
+    <h2>¿Qué es Detector medi-IA?</h2>
+    <p><strong>medi-IA</strong> es una herramienta basada en Inteligencia Artificial que permite detectar y procesar texto en tiempo real desde imágenes, cámara o voz. Utiliza tecnologías como OCR y procesamiento de lenguaje natural para brindar respuestas inmediatas y contextualizadas.</p>
+
+    <p>Su propósito es facilitar el acceso a información sobre medicamentos y textos médicos, sin necesidad de escribir manualmente.</p>
+
+    <h2>¿Por qué usarlo?</h2>
+    <ul>
+      <li><strong>Rápido:</strong> Procesa texto al instante desde la cámara o micrófono.</li>
+      <li><strong>Preciso:</strong> Reconoce textos en distintos formatos visuales.</li>
+      <li><strong>Accesible:</strong> Interfaz clara y fácil de usar para todo público.</li>
+      <li><strong>Historial:</strong> Guarda y permite exportar las consultas realizadas.</li>
+    </ul>
+
+    <p style="text-align: center;">
+      ¿Dudas? Visita nuestra sección de <a href="ayuda.html">Ayuda</a>.
+    </p>
+  </div>
+</section>
 
 
-        <section>
-            <h2>¿Por Qué Usar Detector medi-IA?</h2>
-            <p>La principal ventaja de "Detector medi-IA" es su capacidad de combinar tecnologías avanzadas como el OCR con IA para ofrecer respuestas rápidas y precisas. Algunos de los beneficios son:</p><br>
-            <ul>
-                <li><strong>Rapidez:</strong> Obtén respuestas en tiempo real, sin la necesidad de escribir largas consultas.</li><br>
-                <li><strong>Precisión:</strong> El sistema puede leer texto desde imágenes y videos de diferentes tipos y contextos.</li><br>
-                <li><strong>Fácil de Usar:</strong> Una interfaz sencilla que hace que cualquier persona pueda usarla sin complicaciones.</li><br>
-                <li><strong>Consultas Intuitivas:</strong> Solo tienes que capturar o ingresar el texto y el sistema responderá de manera precisa.</li><br><br><br>
-            </ul>
-        </section>
-
-
-        <div style="text-align: center;">Si tienes alguna pregunta sobre el funcionamiento del sistema, visita nuestra sección de <a href="ayuda.html">Ayuda</a>
-    </div>
-    </section>
-
-    <!-- Sección de derechos reservados -->
+    <!-- Pie de página -->
     <div id="footer">
-        <p>&copy;Todos los derechos reservados <span id="currentYear"></span> | TesjoSoft. <a href="">Devmike117</a></p></p>
-
-<script>
-  // Obtiene el año actual y lo inserta en el elemento con id 'currentYear'
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
+        <p>&copy; <span id="currentYear"></span> | TesjoSoft. Desarrollado por <a href="#">Devmike117</a></p>
     </div>
 
-    <!-- Script para el menú hamburguesa -->
+    <!-- JS: Año dinámico y menú hamburguesa -->
     <script>
-        // Función para alternar el menú hamburguesa
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         const hamburger = document.getElementById('hamburger');
         const navbarLinks = document.getElementById('navbar-links');
-
         hamburger.addEventListener('click', () => {
             navbarLinks.classList.toggle('active');
         });
     </script>
 </body>
 </html>
+
 
