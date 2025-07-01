@@ -1,95 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayuda - Detector medi-IA</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="image/icon.png" rel="icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayuda - Detector medi-IA</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="image/icon.png" />
+  <style>
+    .caja-informativa {
+      background-color: #ffffffee;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    .caja-informativa h2 {
+      color: #2b60d8;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #2b60d8;
+      padding-bottom: 0.4rem;
+    }
+
+    .caja-informativa ul {
+      padding-left: 1.2rem;
+    }
+
+    .caja-informativa li {
+      margin-bottom: 0.8rem;
+    }
+  </style>
 </head>
 <body>
-    <body oncontextmenu="return false" onkeydown="return false"></body>
 
-    <<!-- Barra de navegación centrada -->
-    <div class="navbar">
-        <div class="logo-container">
-            <img src="image/logo.png" alt="Logo del proyecto" class="logo">
-        </div>
-        <!-- Enlaces de la barra de navegación -->
-        <div class="navbar-links" id="navbar-links">
-            <a href="inicio.html" class="navbar-link">Inicio</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
-            <a href="ayuda.html" class="navbar-link">Ayuda</a>
-        </div>
-        <!-- Menú hamburguesa  -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+  <!-- Barra de navegación -->
+  <div class="navbar">
+    <div class="logo-container">
+      <img src="image/logo.png" alt="Logo del proyecto" class="logo">
     </div>
-
-    <!-- Sección de "Ayuda" -->
-    <section id="ayuda" class="info-section">
-        <h1>Cómo funciona el Detector medi-IA</h1>
-        
-        <p>El programa "Detector medi-IA" es una herramienta basada en Inteligencia Artificial que utiliza la cámara de tu dispositivo para capturar texto de imágenes y videos. Este texto es procesado para ofrecerte información relevante o realizar consultas, dependiendo de la sección de la aplicación que estés usando. Aquí te explicamos cómo utilizar todas las funciones del programa.</p>
-        
-        <section>
-            <h2>1. Activación de la cámara</h2>
-            <p>Para comenzar a usar el programa, primero necesitas activar la cámara de tu dispositivo. Esto se hace presionando el botón "Activar cámara" en la interfaz principal. Una vez activada, la cámara comenzará a mostrar el video en tiempo real.</p>
-            <p>En la parte inferior de la cámara, verás el botón "Capturar Texto", que te permitirá capturar cualquier texto que aparezca en la imagen que esté siendo procesada por la cámara.</p>
-        </section>
-
-        <section>
-            <h2>2. Captura de texto</h2>
-            <p>Cuando el botón "Capturar Texto" esté habilitado, puedes hacer clic en él para tomar una captura del texto visible en la imagen o video. Este texto será procesado y aparecerá en la sección de "Texto Detectado". El sistema utilizará un motor de OCR (Reconocimiento Óptico de Caracteres) para extraer el texto.</p>
-            <p>Una vez capturado, el texto se mostrará en el área correspondiente, y la Inteligencia Artificial podrá ofrecerte una respuesta o hacer una consulta relacionada con el texto capturado.</p>
-        </section>
-
-        <section>
-            <h2>3. Consultar texto manualmente</h2>
-            <p>Si prefieres no usar la cámara, también puedes escribir manualmente una consulta o una pregunta en la caja de texto "Escribe tu consulta aquí...". Luego, presiona el botón "Consultar". El sistema procesará tu entrada y devolverá una respuesta generada por el motor de IA.</p>
-            <p>Además, puedes ver el historial de consultas anteriores presionando el botón "Ver Historial". El historial te permitirá revisar todas las consultas previas y sus respectivas respuestas.</p>
-        </section>
-
-        <section>
-            <h2>4. Exportar historial</h2>
-            <p>Si necesitas guardar un registro de tus consultas y respuestas, puedes utilizar la opción "Exportar Historial". Esto descargará un archivo con todas tus consultas previas y las respuestas generadas por el sistema, para que puedas consultarlo más tarde.</p>
-        </section>
-
-        <section>
-            <h2>5. Consejos adicionales</h2>
-            <ul>
-                <li><strong>Asegúrate de que la cámara esté bien enfocada:</strong> Si el texto no es reconocido correctamente, asegúrate de que la cámara esté enfocada en el texto y que no haya mucha distorsión.</li><br>
-                <li><strong>Textos legibles:</strong> El sistema funciona mejor con textos legibles y bien iluminados. Si el texto está borroso o la iluminación es mala, puede que el sistema no lo reconozca correctamente.</li><br>
-                <li><strong>Prueba diferentes tipos de textos:</strong> El motor de IA está diseñado para reconocer una amplia variedad de textos, pero puede que algunos textos complejos no sean completamente precisos.</li><br>
-                <li><strong>Conexión a internet:</strong> Asegúrate de tener una conexión a internet estable, ya que el procesamiento de consultas y las respuestas generadas por IA requieren conexión.</li><br><br>
-            </ul>
-        </section>
-
+    <div class="navbar-links" id="navbar-links">
+      <a href="inicio.html" class="navbar-link">Inicio</a>
+      <a href="contacto.html" class="navbar-link">Contacto</a>
+      <a href="ayuda.html" class="navbar-link">Ayuda</a>
     </div>
-    </section>
-
-    <!-- Sección de derechos reservados -->
-    <div id="footer">
-        <p>&copy;Todos los derechos reservados <span id="currentYear"></span> | TesjoSoft. <a href="">Devmike117</a></p></p>
-
-<script>
-  // Obtiene el año actual y lo inserta en el elemento con id 'currentYear'
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-</script>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
     </div>
+  </div>
 
-    <!-- Script para el menú hamburguesa -->
-    <script>
-        // Función para alternar el menú hamburguesa
-        const hamburger = document.getElementById('hamburger');
-        const navbarLinks = document.getElementById('navbar-links');
+  <!-- Contenido de Ayuda -->
+  <section id="ayuda" class="info-section">
+    <div class="caja-informativa">
+      <h1>¿Cómo funciona Detector medi-IA?</h1>
 
-        hamburger.addEventListener('click', () => {
-            navbarLinks.classList.toggle('active');
-        });
-    </script>
+      <p><strong>Detector medi-IA</strong> es una herramienta que utiliza la cámara y la voz para capturar texto desde imágenes o vídeos, procesarlo con IA y ofrecer respuestas precisas. También permite realizar consultas escritas y exportar el historial de interacciones.</p>
+
+      <h2>1. Activación de la cámara</h2>
+      <p>Haz clic en "Activar cámara". Una vez encendida, podrás visualizar la imagen en tiempo real y capturar texto con el botón "Capturar Texto".</p>
+
+      <h2>2. Captura de texto</h2>
+      <p>La imagen será procesada mediante OCR para extraer el texto y mostrarlo en pantalla. Luego, la IA brindará una respuesta contextualizada.</p>
+
+      <h2>3. Consulta manual</h2>
+      <p>También puedes escribir directamente tu consulta en la caja de texto y pulsar "Consultar". Puedes revisar el historial con "Ver Historial" o exportarlo con "Exportar Historial".</p>
+
+      <h2>4. Consejos útiles</h2>
+      <ul>
+        <li><strong>Buena iluminación:</strong> Mejora la precisión del OCR.</li>
+        <li><strong>Texto legible:</strong> Evita imágenes borrosas o mal enfocadas.</li>
+        <li><strong>Internet estable:</strong> Requerido para consultas por IA.</li>
+        <li><strong>Permisos:</strong> Asegúrate de otorgar permisos de cámara y micrófono.</li>
+      </ul>
+
+      <p style="text-align:center;">¿Necesitas más ayuda? Visita nuestras <a href="contacto.html">vías de contacto</a>.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer">
+    <p>&copy; <span id="currentYear"></span> | TesjoSoft. <a href="#">Devmike117</a></p>
+  </div>
+
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const hamburger = document.getElementById('hamburger');
+    const navbarLinks = document.getElementById('navbar-links');
+    hamburger.addEventListener('click', () => {
+      navbarLinks.classList.toggle('active');
+    });
+  </script>
+
 </body>
 </html>
+
