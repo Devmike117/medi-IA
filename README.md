@@ -1,7 +1,7 @@
 # Proyecto de Detección de medicamentos por IA
 
 <p align="center">
-  <img alt="medi IA" src="mediia.png" />
+  <img alt="medi IA" src="login.webp" />
 </p>
 
 
