@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devmike117
+  </title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1b1b1b;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    #countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #00ffc8;
+    }
+
+    a.button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #00ffc8;
+      color: #1b1b1b;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #00cc9c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sistema sin soporte</h1>
+  <p>El soporte de este sistema ha finalizado</p>Se redirigira a mi página web en <span id="countdown"></span> segundos.</p>
+
+
+  <div class="autoredirect">
+
+  </div>
+  <script>
+    let countdown = 10;
+    const countdownElement = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+      countdown--;
+      countdownElement.textContent = countdown;
+
+      if (countdown <= 0) {
+        clearInterval(interval);
+        window.location.href = "https://devmikeportfolio.netlify.app/";
+      }
+    }, 1000); 
+  </script>
+</body>
+</html>
+
+
+
